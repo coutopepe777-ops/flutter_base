@@ -1,59 +1,69 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(home: Login()));
+  runApp(
+    const MaterialApp(debugShowCheckedModeBanner: false, home: LoginPage()),
+  );
 }
 
-// Tela de Login
-class Login extends StatelessWidget {
+class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Título da tela
-      appBar: AppBar(title: Text('Login')),
-
-      // Conteúdo da tela
+      appBar: AppBar(
+        title: const Text(
+          'Tela de login',
+          style: TextStyle(color: Color.fromARGB(255, 5, 25, 35)),
+        ),
+        backgroundColor: const Color(0xff3273a8),
+      ),
       body: Padding(
-        padding: EdgeInsets.all(20),
-
+        padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            // Título
-            Text('Acesso ao Sistema', style: TextStyle(fontSize: 25)),
-
-            SizedBox(height: 20),
-
-            // Campo de e-mail
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'E-mail',
-                border: OutlineInputBorder(),
-              ),
-            ),
-
-            SizedBox(height: 10),
-
-            // Campo de senha
-            TextField(
+            const Text('Acesso ao sistema', style: TextStyle(fontSize: 24)),
+            const SizedBox(height: 24),
+            const TextField(decoration: InputDecoration(labelText: 'E-mail')),
+            const SizedBox(height: 24),
+            const TextField(
               obscureText: true,
-              decoration: InputDecoration(
-                labelText: 'Senha',
-                border: OutlineInputBorder(),
-              ),
+              decoration: InputDecoration(labelText: 'senha'),
             ),
-
-            SizedBox(height: 20),
-
-            // Botão
+            const SizedBox(height: 24),
             ElevatedButton(
               onPressed: () {
-                print('Botão Entrar pressionado');
+                debugPrint('Botão pressionado');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomePage()),
+                );
               },
-              child: Text('ENTRAR'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xff3273a8),
+                foregroundColor: Colors.black,
+              ),
+              child: const Text('Entrar'),
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Home'),
+        backgroundColor: const Color(0xff3273a8),
+      ),
+      body: const Center(child: Text('Você entrou no sistema!')),
     );
   }
 }

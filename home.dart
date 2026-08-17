@@ -13,15 +13,23 @@ class MyLogoApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         // SafeArea evita que a imagem fique debaixo da barra de bateria/relógio
-        body: SafeArea(
-          child: Align(
-            alignment: Alignment.topCenter,
-            child: Image.network(
-              'https://images.icon-icons.com/2108/PNG/512/flutter_icon_130936.png',
-              height: 150, // Definimos a altura da imagem
-              width: 150, // Definimos a largura da imagem
-              fit: BoxFit.contain, // Garante que a imagem não seja cortada
-            ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Sejam Bem Vindos!!', style: TextStyle(fontSize: 32)),
+              SizedBox(height: 24),
+
+              //Botão Voltar
+              ElevatedButton(
+                onPressed: () {
+                  //volta para a tela anterior
+                  //destruir a tela de home
+                  Navigator.pop(context);
+                },
+                child: Text('Voltar para Login'),
+              ),
+            ],
           ),
         ),
       ),
